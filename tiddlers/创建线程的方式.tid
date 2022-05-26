@@ -1,0 +1,47 @@
+created: 20220526083006491
+creator: TidGiUser
+modified: 20220526083023357
+modifier: TidGiUser
+tags: 0.多线程基本原理
+title: 创建线程的方式
+type: text/vnd.tiddlywiki
+
+! 创建线程的方式，4种，本质是1种
+
+# 继承Thread类，实现run方法。使用的时候new 自定义thread类
+# 实现Runnable接口，实现run方法。使用的时候new Thread类，将自定义类作为参数传入其构造方法,成Thread类中一个target属性。Thread源码中run方法如果没被覆盖，就会调用target.run()
+
+2.1.如果Runnable接口的实现类是一次性的，不涉及复用，第2种的优雅简写：''匿名内部类或lambda表达式''
+
+[img[截屏2021-12-13 下午1.25.49.png|0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%2065987c03ec134bcba8c23a8610aa7a64/%E6%88%AA%E5%B1%8F2021-12-13_%E4%B8%8B%E5%8D%881.25.49.png]]
+
+runnable的好处：
+
+# ''线程创建与任务的定义解耦，这样就不用来一个新任务就创建一个新线程''，也就让线程池的使用成为了可能。
+# 继承了thread就不能继承别的类了
+# 1,2的缺点是：不能获取异步执行的结果，我想让线程运行结束之后返回给我一个值，用静态变量？？？这样不灵活，所以你可以用callable，''Callable 一般会和线程池一起使用''
+
+''Callable接口是一个函数式接口，也是一个泛型接口，只有一个方法call，返回泛型''
+
+但是，如果不用线程池，自己创建Thread，callable不能直接传给Thread，只能传FutureTask
+
+Callable接口看起来类似于Runnable接口，只不过一个有返回值一个没返回值，''但是Callable接口不能作为参数直接传给Thread类''，需要''RunnableFuture接口''做搭桥
+
+从下面的图看，FutureTask具有Runnable的特性，''能够定义任务，又具有Future的特性，能够获取未来异步执行的结果''。
+
+[img[Untitled|0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%2065987c03ec134bcba8c23a8610aa7a64/Untitled.png]]
+
+再说一下，Future接口，至少提供了3大功能：
+
+# 能够取消异步执行中的任务 cancel
+# 判断异步任务是否完成 isDone
+# 获取异步任务完成后的结果 get ，可以是无限阻塞式的，或者有时限的阻塞式
+# 线程池创建线程
+
+使用Executors静态工厂创建不同的线程池
+
+[ext[线程池（基于bugstack）|https://www.notion.so/bugstack-38afe784baf84bef8ef4a2bde7b6202a]]
+
+[ext[31 线程池|https://www.notion.so/31-ff249dfeb3514611b6eab812efef27d0]]
+
+[ext[线程池在美团中的应用|https://www.notion.so/6c14c287dda14575bec4f0aa45427c85]]
