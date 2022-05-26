@@ -1,8 +1,18 @@
 created: 20220526072853911
 creator: TidGiUser
-modified: 20220526082206194
+difficulty: 3.8000000000000007
+due: 20220528140714579
+grade: 2
+history: [{"due":"20220528140517364","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220526140517364"},{"due":"20220528140617580","interval":0,"difficulty":5.2,"stability":2,"retrievability":1,"grade":1,"lapses":0,"reps":2,"review":"20220526140617579"},{"due":"20220528140638374","interval":0,"difficulty":5.4,"stability":2,"retrievability":1,"grade":1,"lapses":0,"reps":3,"review":"20220526140638374"},{"due":"20220528140705626","interval":0,"difficulty":4.6000000000000005,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":4,"review":"20220526140705626"}]
+interval: 0
+lapses: 0
+modified: 20220526140747639
 modifier: TidGiUser
-tags: ?
+reps: 5
+retrievability: 1
+review: 20220526140714579
+stability: 2
+tags: 
 title: 技术
 type: text/vnd.tiddlywiki
 
