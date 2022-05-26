@@ -1,9 +1,9 @@
 created: 20220526083156960
 creator: TidGiUser
-modified: 20220526113439856
+modified: 20220526153655181
 modifier: TidGiUser
-tags: 0.多线程基本原理 ?
-title: 线程状态,结合Thread类常用方法
+tags: 多线程基础知识 ?
+title: 30.线程状态,Thread类常用方法
 type: text/vnd.tiddlywiki
 
 ! 线程状态（getState）（结合Thread类常用方法）

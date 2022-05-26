@@ -1,10 +1,11 @@
 created: 20220526083006491
 creator: TidGiUser
-modified: 20220526111453042
+modified: 20220526153644404
 modifier: TidGiUser
-tags: 0.多线程基本原理 ?
-title: 创建线程的方式
+tags: 多线程基础知识 ?
+title: 20.创建线程的方式
 type: text/vnd.tiddlywiki
+wysiwyg: yes
 
 ! 创建线程的方式，4种，本质是1种
 

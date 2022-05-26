@@ -1,0 +1,15 @@
+created: 20220526150927909
+creator: TidGiUser
+modified: 20220526153703060
+modifier: TidGiUser
+tags: 多线程基础知识 ?
+title: 00.为什么要有多线程(优点)
+type: text/vnd.tiddlywiki
+
+
+# 充分利用多cpu
+# 程序编写更简单？？<div>
+想象一下，尤其在GUI程序中，没有多线程，你的web类项目将很难编写，框架不会为你的controller方法自动开一个线程执行。
+</div>
+# 异步事件简化处理，IO操作不会阻塞其他请求的执行
+# 响应更灵敏的用户界面

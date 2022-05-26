@@ -6,7 +6,7 @@ grade: 2
 history: [{"due":"20220528140517364","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220526140517364"},{"due":"20220528140617580","interval":0,"difficulty":5.2,"stability":2,"retrievability":1,"grade":1,"lapses":0,"reps":2,"review":"20220526140617579"},{"due":"20220528140638374","interval":0,"difficulty":5.4,"stability":2,"retrievability":1,"grade":1,"lapses":0,"reps":3,"review":"20220526140638374"},{"due":"20220528140705626","interval":0,"difficulty":4.6000000000000005,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":4,"review":"20220526140705626"}]
 interval: 0
 lapses: 0
-modified: 20220526140747639
+modified: 20220526153053898
 modifier: TidGiUser
 reps: 5
 retrievability: 1
@@ -19,7 +19,12 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/ControlPanel/Basics/
 欢迎使用 ~TiddlyWiki 及参与 ~TiddlyWiki 社群
 
-开始将重要资讯存放于 ~TiddlyWiki 之前，确认您可以可靠地保存变更是很重要的。详细资讯请参阅 https://tiddlywiki.com/#GettingStarted
+开始将重要资讯存放于 ~TiddlyWiki 之前，确认您可以可靠地保存变更是很重要的。详细资讯请参阅 
+https://tiddlywiki.com/#GettingStarted
+语法：
+https://oss.hintsnet.com/mirror/tiddlywiki.cn.html#WikiText
+中文文档：
+https://tw-cn.netlify.app/
 
 !! 设置此 ~TiddlyWiki
 
