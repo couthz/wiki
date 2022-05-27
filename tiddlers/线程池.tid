@@ -1,13 +1,14 @@
 created: 20220526153907571
 creator: TidGiUser
-modified: 20220526154343564
+modified: 20220526155422107
 modifier: TidGiUser
-tags: 多线程 ？
+tags: 多线程 $:/tags/Commander/Working ?
 title: 线程池
 type: text/vnd.tiddlywiki
+wysiwyg: yes
 
 [[线程池（基于bugstack）|https://www.notion.so/bugstack-38afe784baf84bef8ef4a2bde7b6202a]]
 
-[[31 线程池|https://www.notion.so/31-ff249dfeb3514611b6eab812efef27d0]]
+[[31 线程池（设计模式角度）|https://www.notion.so/31-ff249dfeb3514611b6eab812efef27d0]]
 
 [[线程池在美团中的应用|https://www.notion.so/6c14c287dda14575bec4f0aa45427c85]]
