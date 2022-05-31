@@ -1,0 +1,250 @@
+created: 20220527083900492
+creator: TidGiUser
+modified: 20220531064931106
+modifier: TidGiUser
+tags: 线程池 ?
+title: 11.线程池源码ThreadPoolExecutor（未完成）
+type: text/vnd.tiddlywiki
+
+! 应该有的几个疑问
+1. 线程池如何接受任务？
+
+2. 线程如何运行任务？
+
+3. 线程池如何关闭？
+
+! 高3位与低29位,状态与线程数量
+在 ThreadPoolExecutor 线程池实现类中，使用 AtomicInteger 类型的 ctl 记录线程池状态和线程数量
+[img[image.png]]
+RUNNING：运行状态，接受新的任务并且处理队列中的任务。
+
+SHUTDOWN：关闭状态(调用了shutdown方法)。不接受新任务,但是要处理队列中的任务。
+
+STOP：停止状态(调用了shutdownNow方法)。不接受新任务，也不处理队列中的任务，并且要中断正在处理的任务。
+
+TIDYING：所有的任务都已终止了，workerCount为0，线程池进入该状态后会调 terminated() 方法进入TERMINATED 状态。
+
+TERMINATED：终止状态，terminated() 方法调用结束后的状态。
+
+! execute()提交
+```
+这里的一个疑问？？如果已创建的线程数到达了核心线程数，但是有空闲的线程，此时任务是进入队列还是直接用空闲线程运行？？？
+感觉要看一看后面的runworker代码
+```
+
+
+```
+分为三步：
+1. 如果当前工作线程数（包不包括空闲的？？）小于核心线程数，尝试启动一个新线程处理任务。addWorker方法会检查线程池状态和worker（？？）的数量，避免不该添加时添加线程。
+2. 如果任务进入了队列，需要二次检查。。
+3. 如果队列满了，需要创建新线程，如果失败？？
+        /*
+         * Proceed in 3 steps:
+         *
+         * 1. If fewer than corePoolSize threads are running, try to
+         * start a new thread with the given command as its first
+         * task.  The call to addWorker atomically checks runState and
+         * workerCount, and so prevents false alarms that would add
+         * threads when it shouldn't, by returning false.
+         *
+         * 2. If a task can be successfully queued, then we still need
+         * to double-check whether we should have added a thread
+         * (because existing ones died since last checking) or that
+         * the pool shut down since entry into this method. So we
+         * recheck state and if necessary roll back the enqueuing if
+         * stopped, or start a new thread if there are none.
+         *
+         * 3. If we cannot queue task, then we try to add a new
+         * thread.  If it fails, we know we are shut down or saturated
+         * and so reject the task.
+         */
+```
+
+```java
+    public void execute(Runnable command) {
+        if (command == null)
+            throw new NullPointerException();
+        int c = ctl.get();
+        if (workerCountOf(c) < corePoolSize) {
+            if (addWorker(command, true))
+                return;
+            c = ctl.get();
+        }
+        if (isRunning(c) && workQueue.offer(command)) {
+            int recheck = ctl.get();
+            if (! isRunning(recheck) && remove(command))
+                reject(command);
+            else if (workerCountOf(recheck) == 0)
+                addWorker(null, false);
+        }
+        else if (!addWorker(command, false))
+            reject(command);
+    }
+```
+
+! addWorker
+可以分为两块看：
+
+1. 利用CAS检查线程池状态、增加线程数量
+
+2. 在独占锁里创建线程并启动
+
+```java
+ private boolean addWorker(Runnable firstTask, boolean core) {
+        // 为确保线程安全，进行CAS反复重试
+        retry:
+        for (;;) {
+            int c = ctl.get();
+            // 获取runState , c 的高位存储
+            // c & ~CAPACITY;
+            int rs = runStateOf(c);
+
+            // Check if queue empty only if necessary.
+            // 已经shutdown, firstTask 为空的添加并不会成功
+            if (rs >= SHUTDOWN &&
+                ! (rs == SHUTDOWN &&
+                   firstTask == null &&
+                   ! workQueue.isEmpty()))
+                return false;
+
+            for (;;) {
+                int wc = workerCountOf(c);
+                // 如果超出最大允许创建的线程数，则直接失败
+                if (wc >= CAPACITY ||
+                    wc >= (core ? corePoolSize : maximumPoolSize))
+                    return false;
+                // CAS 更新worker+1数，成功则说明占位成功退出retry，后续的添加操作将是安全的，失败则说明已有其他线程变更该值
+                if (compareAndIncrementWorkerCount(c))
+                    break retry;
+                c = ctl.get();  // Re-read ctl
+                // runState 变更，则退出到 retry 重新循环 
+                if (runStateOf(c) != rs)
+                    continue retry;
+                // else CAS failed due to workerCount change; retry inner loop
+            }
+        }
+        // 以下为添加 worker 过程
+        boolean workerStarted = false;
+        boolean workerAdded = false;
+        Worker w = null;
+        try {
+            // 使用 Worker 封闭 firstTask 任务，后续运行将由 Worker 接管
+            w = new Worker(firstTask);
+            final Thread t = w.thread;
+            if (t != null) {
+                final ReentrantLock mainLock = this.mainLock;
+                // 添加 worker 的过程，需要保证线程安全
+                mainLock.lock();
+                try {
+                    // Recheck while holding lock.
+                    // Back out on ThreadFactory failure or if
+                    // shut down before lock acquired.
+                    int rs = runStateOf(ctl.get());
+                    // SHUTDOWN 情况下还是会创建 Worker, 但是后续检测将会失败
+                    if (rs < SHUTDOWN ||
+                        (rs == SHUTDOWN && firstTask == null)) {
+                        // 既然是新添加的线程，就不应该是 alive 状态
+                        if (t.isAlive()) // precheck that t is startable
+                            throw new IllegalThreadStateException();
+                        // workers 只是一个工作线程的容器，使用 HashSet 承载
+                        // private final HashSet<Worker> workers = new HashSet<Worker>();
+                        workers.add(w);
+                        int s = workers.size();
+                        // 维护一个全局达到过的最大线程数计数器
+                        if (s > largestPoolSize)
+                            largestPoolSize = s;
+                        workerAdded = true;
+                    }
+                } finally {
+                    mainLock.unlock();
+                }
+                // worker 添加成功后，进行将worker启起来，里面应该是有一个 死循环，一直在获取任务
+                // 不然怎么运行添加到队列里的任务呢？
+                if (workerAdded) {
+                    t.start();
+                    workerStarted = true;
+                }
+            }
+        } finally {
+            // 如果任务启动失败，则必须进行清理，返回失败
+            if (! workerStarted)
+                addWorkerFailed(w);
+        }
+        return workerStarted;
+    }
+```
+
+[[参考：CAS简介|CAS]]
+
+! runWorker (内部类worker,run方法调用的方法)
+[img[截屏2022-05-31 14.30.32.png]]
+Worker原理的关键点：
+
+1.将 Worker 自身当作一个 任务，绑定到 worker.thread 中，thread 启动时，worker 就启动了，''thread的启动在前面addWorker的源码中''
+
+2.ThreadFactory，后面再说
+
+3.run方法调用的是ThreadPoolExecutor中定义的runWorker方法，相当于说runWorker是属于线程池级别的固定流程
+相当于：线程运行-调用runWorker-调用firstTask或者getTask()中的任务（''真正由用户创建的任务''）
+
+runWorker要点：
+
+锁操作是 Worker 继承 AQS 自己实现的不可重入的独占锁。
+
+```java
+    final void runWorker(Worker w) {
+        Thread wt = Thread.currentThread();
+        Runnable task = w.firstTask;
+        w.firstTask = null;
+        w.unlock(); // allow interrupts
+        boolean completedAbruptly = true;
+        try {
+            // 不停地从 workQueue 中获取任务，然后执行，就是这么个逻辑
+            // getTask() 会阻塞式获取，所以 Worker 往往不会立即退出 
+            while (task != null || (task = getTask()) != null) {
+                // 执行过程中是不允许并发的，即同时只能一个 task 在运行，此时也不允许进行 interrupt
+                w.lock();
+                // If pool is stopping, ensure thread is interrupted;
+                // if not, ensure thread is not interrupted.  This
+                // requires a recheck in second case to deal with
+                // shutdownNow race while clearing interrupt
+                // 检测是否已被线程池是否停止 或者当前 worker 被中断
+                // STOP = 1 << COUNT_BITS;
+                if ((runStateAtLeast(ctl.get(), STOP) ||
+                     (Thread.interrupted() &&
+                      runStateAtLeast(ctl.get(), STOP))) &&
+                    !wt.isInterrupted())
+                    // 中断信息传递
+                    wt.interrupt();
+                try {
+                    // 任务开始前 切点，默认为空执行
+                    beforeExecute(wt, task);
+                    Throwable thrown = null;
+                    try {
+                        // 直接调用任务的run方法， 具体的返回结果，会被 FutureTask 封装到 某个变量中
+                        // 可以参考以前的文章 （FutureTask是怎样获取到异步执行结果的？ https://www.cnblogs.com/yougewe/p/11666284.html）
+                        task.run();
+                    } catch (RuntimeException x) {
+                        thrown = x; throw x;
+                    } catch (Error x) {
+                        thrown = x; throw x;
+                    } catch (Throwable x) {
+                        thrown = x; throw new Error(x);
+                    } finally {
+                        // 任务开始后 切点，默认为空执行
+                        afterExecute(task, thrown);
+                    }
+                } finally {
+                    task = null;
+                    w.completedTasks++;
+                    w.unlock();
+                }
+            }
+            // 正常退出，有必要的话，可能重新将 Worker 添加进来
+            completedAbruptly = false;
+        } finally {
+            // 处理退出后下一步操作，可能重新添加 Worker
+            processWorkerExit(w, completedAbruptly);
+        }
+    }
+```
