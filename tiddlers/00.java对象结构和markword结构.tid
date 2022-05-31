@@ -1,0 +1,11 @@
+created: 20220531074437039
+creator: TidGiUser
+modified: 20220531075001547
+modifier: TidGiUser
+tags: [[00 Synchronized]] ?
+title: 00.java对象结构和markword结构
+type: text/vnd.tiddlywiki
+
+[img[imag222e23231.png]]
+如果通过 Java 程序查看 Object 对象头的结构呢?OpenJDK 提供的 JOL 包是一个非常好的工 具，可以帮我们在运行时计算某个对象的大小
+

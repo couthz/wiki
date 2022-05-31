@@ -1,0 +1,25 @@
+created: 20220531075018152
+creator: TidGiUser
+modified: 20220531080258985
+modifier: TidGiUser
+tags: [[00 Synchronized]] ?
+title: 01.锁升级
+type: text/vnd.tiddlywiki
+
+! markword表示锁类型
+[img[imagemark.png]]
+markword的最后2bit表示锁类型：
+
+00:轻量锁
+
+10:重量锁
+
+11:GC标记
+
+由于2bit不够表示5种锁类型，所以又借了前面一位
+
+001:无锁
+
+101:轻量级锁
+
+! 

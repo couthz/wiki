@@ -1,7 +1,9 @@
 created: 20220531053639917
 creator: TidGiUser
-modified: 20220531053707136
+modified: 20220531072344261
 modifier: TidGiUser
-tags: 多线程 ?
+tags: 多线程 ? 01.多线程缺点
 title: 线程安全:原子性
 type: text/vnd.tiddlywiki
+
+原子性定义：一个逻辑上整体的操作可以被中途打断（原子性)(实际的原子性往往是一个相对的概念，一段原子性的代码并不意味着不会被cpu打断了，一般表现为：访问同一个状态的A，B线程，A线程必须在B线程完成了某段原子性操作之后才能继续执行，B相对于A是原子的。

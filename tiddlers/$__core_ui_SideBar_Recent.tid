@@ -1,9 +1,9 @@
 caption: {{$:/language/SideBar/Recent/Caption}}
 created: 20220526145211493
 creator: TidGiUser
-modified: 20220526145213585
+modified: 20220531080514052
 modifier: TidGiUser
-tags: 
+tags: $:/tags/SideBar
 title: $:/core/ui/SideBar/Recent
 type: text/vnd.tiddlywiki
 
