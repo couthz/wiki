@@ -1,9 +1,10 @@
 created: 20220526083156960
 creator: TidGiUser
-modified: 20220526154826197
+modified: 20220601102800519
 modifier: TidGiUser
-tags: 多线程基础知识 ? $:/tags/Commander/Working
+tags: 多线程基础知识 $:/tags/Commander/Working fx
 title: 30.线程状态,Thread类常用方法
+tmap.id: e065a1e3-b73e-499a-ba36-d048b1089030
 type: text/vnd.tiddlywiki
 
 ! 线程状态（getState）（结合Thread类常用方法）

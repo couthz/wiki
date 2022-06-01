@@ -6,7 +6,7 @@ grade: 2
 history: [{"due":"20220528140517364","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220526140517364"},{"due":"20220528140617580","interval":0,"difficulty":5.2,"stability":2,"retrievability":1,"grade":1,"lapses":0,"reps":2,"review":"20220526140617579"},{"due":"20220528140638374","interval":0,"difficulty":5.4,"stability":2,"retrievability":1,"grade":1,"lapses":0,"reps":3,"review":"20220526140638374"},{"due":"20220528140705626","interval":0,"difficulty":4.6000000000000005,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":4,"review":"20220526140705626"}]
 interval: 0
 lapses: 0
-modified: 20220526153053898
+modified: 20220601120526029
 modifier: TidGiUser
 reps: 5
 retrievability: 1
@@ -16,23 +16,23 @@ tags:
 title: 技术
 type: text/vnd.tiddlywiki
 
-\define lingo-base() $:/language/ControlPanel/Basics/
 欢迎使用 ~TiddlyWiki 及参与 ~TiddlyWiki 社群
 
 开始将重要资讯存放于 ~TiddlyWiki 之前，确认您可以可靠地保存变更是很重要的。详细资讯请参阅 
-https://tiddlywiki.com/#GettingStarted
+[ext[https://tiddlywiki.com/#GettingStarted]]
 语法：
-https://oss.hintsnet.com/mirror/tiddlywiki.cn.html#WikiText
+[ext[https://oss.hintsnet.com/mirror/tiddlywiki.cn.html#WikiText]]
 中文文档：
-https://tw-cn.netlify.app/
+[ext[https://tw-cn.netlify.app/]]
 
-!! 设置此 ~TiddlyWiki
+学习路线：
+[ext[https://www.processon.com/view/link/618a2b62e0b34d73f7eb3cd7]]
 
-<div class="tc-control-panel">
+架构班资料：
 
-|<$link to="$:/SiteTitle"><<lingo Title/Prompt>></$link> |<$edit-text tiddler="$:/SiteTitle" default="" tag="input"/> |
-|<$link to="$:/SiteSubtitle"><<lingo Subtitle/Prompt>></$link> |<$edit-text tiddler="$:/SiteSubtitle" default="" tag="input"/> |
-|<$link to="$:/DefaultTiddlers"><<lingo DefaultTiddlers/Prompt>></$link> |<<lingo DefaultTiddlers/TopHint>><br> <$edit tag="textarea" tiddler="$:/DefaultTiddlers"/><br>//<<lingo DefaultTiddlers/BottomHint>>// |
-</div>
+<a >http://topcoder.cloud/forum.php?mod=forumdisplay&fid=46&page=1</a>
 
-请参阅[[控制台|$:/ControlPanel]]查看更多选项。
+架构班视频：
+
+<a >http://topcoder.cloud/misc.php?mod=tag&id=23&type=thread&page=1</a>
+

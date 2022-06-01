@@ -1,9 +1,10 @@
 created: 20220526154937092
 creator: TidGiUser
-modified: 20220526155246950
+modified: 20220601102800514
 modifier: TidGiUser
-tags: 线程池 ?
+tags: 线程池 $:/tags/Commander/Working fx
 title: 00.为什么要有线程池
+tmap.id: 166b5850-e27f-47f5-b5c2-2e06726dc68b
 type: text/vnd.tiddlywiki
 
 Java 线程的创建非常昂贵，需要 JVM 和 OS(操作系统)配合完成大量的工作:
