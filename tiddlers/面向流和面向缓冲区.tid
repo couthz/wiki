@@ -1,0 +1,13 @@
+created: 20220603153657051
+creator: TidGiUser
+modified: 20220603153822056
+modifier: TidGiUser
+tags: IO fx
+title: 面向流和面向缓冲区
+type: text/vnd.tiddlywiki
+
+1. OIO是面向流（Stream Oriented）的，NIO是面向缓冲区（Buffer Oriented）的。
+
+在面向流的OIO操作中，IO的 read() 操作总是以流式的方式顺序地从一个流（Stream）中读取一个或多个字节，因此，我们不能随意地改变读取指针的位置，也不能前后移动流中的数据。
+
+而NIO中引入了Channel（通道）和Buffer（缓冲区）的概念。面向缓冲区的读取和写入，都是与Buffer进行交互。用户程序只需要从通道中读取数据到缓冲区中，或将数据从缓冲区中写入到通道中。NIO不像OIO那样是顺序操作，可以随意地读取Buffer中任意位置的数据，可以随意修改Buffer中任意位置的数据。
