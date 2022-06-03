@@ -1,6 +1,6 @@
 created: 20220601005204081
 creator: TidGiUser
-modified: 20220601103035847
+modified: 20220602150932807
 modifier: TidGiUser
 tags: 技术 fx
 title: 异步回调模式
@@ -81,3 +81,6 @@ Java 中回调模式的标准实现类为 CompletableFuture，''由于该类出�
 
 3. 关于同步、异步、阻塞、非阻塞
 [[同步、异步、阻塞、非阻塞]]
+
+4. 关于用户态内核态
+[[用户态和内核态]]

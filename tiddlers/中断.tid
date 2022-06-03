@@ -1,0 +1,40 @@
+created: 20220602160316204
+creator: TidGiUser
+modified: 20220602160440149
+modifier: TidGiUser
+tags: 计算机底层 IO fx
+title: 中断
+type: text/vnd.tiddlywiki
+
+!理解一下中断
+
+硬中断：键盘，打印机
+
+硬中断处理机制实现细节：
+
+键盘输入->中断控制器->通过一个针脚连入cpu（cpu又怎么知道给哪个软件回显呢）
+cpu去内存固定位置找到执行程序->执行通知os->os根据中断信号类型找到事先写好的处理程序（中断向量表）->运行处理程序之后，操作系统发现是office在最前排等待输出->office处理
+
+软中断：当程序进行系统调用时，中断向量表中的int 0x80或者sysenter原语，通过ax寄存器填入调用号（对应哪个系统调用函数），返回值也通过ax返回
+''（所以线程比纤程慢）''
+
+过程：java读网络-jvm read()->c库 read()->内核空间->system_call()（系统调用处理程序）->sys_read();
+
+
+从汇编角度理解软中断：
+
+系统调用函数write(int fd, const void *buffer, size_t nbytes)
+fd是文件描述符，buffer是内容，nbytes是长度
+
+```
+mov edx, len  :长度
+mov ecx, msg  :内容
+
+mov ebx, 1     :文件描述符1，代表std_out
+mov eax, 4     :write函数系统调用号4
+int 0x80      :cpu陷入内核态
+
+mov ebx, 0
+mov eax, 1      :exit函数系统调用号1
+int 0x80
+```
