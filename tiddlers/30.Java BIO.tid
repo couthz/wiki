@@ -1,0 +1,80 @@
+created: 20220606053055373
+creator: TidGiUser
+modified: 20220606065914780
+modifier: TidGiUser
+tags: IO fx
+title: 30.Java BIO
+type: text/vnd.tiddlywiki
+
+之前几个卡片其实都是从内核的角度看IO，这个卡片从java应用程序的角度看
+
+测试项目地址： /Users/zhengheci/Desktop/nien/code/netty_redis_zookeeper_source_code-master/NioDemos
+
+! BIO
+Connection per Thread模型，在动连接数不是特别高(小于单机1000)的情况下，这种模型是比较不错的，可以让每一个 连接专注于自己的I/O并且编程模型简单，也不用过多考虑系统的过载、限流等问题。''此模型往往会结合线程池使用，线程池本身就是一个天然的漏斗，可以缓冲一些系统处理不了的连接或请求''。
+
+缺陷：
+
+1. 线程的创建和销毁成本很高：线程的创建和销毁都需要通过重量级的系统调用去完成。
+
+2. 线程本身占用较大内存：像Java的线程的栈内存，一般至少分配512K~1M的空间， 如果系统中的线程数过千，整个JVM的内存将被耗用1G。
+
+3. 线程的切换成本是很高的：操作系统发生线程切换的时候，需要保留线程的上下文， 然后执行系统调用。过多的线程频繁切换带来的后果是，可能执行线程切换的时间甚至会 大于线程执行的时间，这时候带来的表现往往是系统CPU sy值特别高(超过20%以上)的情 况，导致系统几乎陷入不可用的状态。
+
+>{{top命令}}
+
+4. 容易造成锯齿状的系统负载:因为''系统负载(System Load)是用活动线程数和等待线程数来综合计算的''，一旦线程数量高但外部网络环境不是很稳定，就很容易造成大量请求同时到来，从而激活大量阻塞线程从而使系统负载压力过大。[img[截屏2022-06-06 14.57.20.png]]
+
+
+写法：
+一般就是用ServerSocket获取socket，然后得到socket的inputStream或者outputStream，[[面向流|面向流和面向缓冲区]]
+
+```java
+class ConnectionPerThread implements Runnable {
+    public void run() {
+        try {
+            ServerSocket serverSocket =
+                    new ServerSocket(NioDemoConfig.SOCKET_SERVER_PORT);
+            while (!Thread.interrupted()) {
+                Socket socket = serverSocket.accept();
+                Handler handler = new Handler(socket);
+                //创建新线程来handle
+                //或者，使用线程池来处理
+                new Thread(handler).start();
+            }
+
+        } catch (IOException ex) { /* 处理异常 */ }
+    }
+
+    static class Handler implements Runnable {
+        final Socket socket;
+
+        Handler(Socket s) {
+            socket = s;
+        }
+
+        public void run() {
+            while (true) {
+                try {
+                    byte[] input = new byte[NioDemoConfig.SERVER_BUFFER_SIZE];
+                    /* 读取数据 */
+                    socket.getInputStream().read(input);
+
+                    Logger.info("收到："+new String(input));
+
+                    /* 处理业务逻辑，获取处理结果 */
+                    byte[] output =input;
+                    /* 写入结果 */
+                    socket.getOutputStream().write(output);
+                } catch (IOException ex) { /*处理异常*/ }
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+      new  ConnectionPerThread().run();
+    }
+}
+```
+! 

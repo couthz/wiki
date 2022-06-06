@@ -1,0 +1,24 @@
+created: 20220606065853855
+creator: TidGiUser
+modified: 20220606070138756
+modifier: TidGiUser
+tags: IO
+title: 31.Java NIO
+type: text/vnd.tiddlywiki
+
+在1.4版本之前，Java IO类库是阻塞式IO;从1.4版本开始，引进了新的异步IO库，被称为Java New IO类库，简称为Java NIO。
+
+Java NIO类库的目标，就是要让Java支持非阻塞IO，基于这个原因，更多的人喜欢称 Java NIO为非阻塞IO(Non-Block IO)，称“老的”阻塞式Java IO为[[OIO|30.Java BIO]](Old IO)。
+
+总体上说，NIO弥补了原来[[面向流|面向流和面向缓冲区]]的OIO同步阻塞的不足，它为标准Java代码提供了高速的、[[面向缓冲区|面向流和面向缓冲区]]的IO。
+
+Java NIO类库包含以下三个核心组件:
+
+⚫ Channel(通道)
+
+⚫ Buffer(缓冲区)
+
+⚫ Selector(选择器) 
+
+如果理解了第2章的四种IO模型，大家一眼就能识别出来，''Java NIO，属于第三种模型
+—— [[IO 多路复用模型|20.五种IO模型]]。只不过，Java NIO组件提供了统一的应用开发API，为大家屏蔽了底层的操作系统的差异。''
