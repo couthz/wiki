@@ -1,6 +1,6 @@
 created: 20220605132258227
 creator: TidGiUser
-modified: 20220606015713839
+modified: 20220606080349277
 modifier: TidGiUser
 tags: IO fx
 title: 20.五种IO模型
@@ -43,6 +43,8 @@ type: text/vnd.tiddlywiki
 ''（从N次变为m+1次）''
 
 ! 3.多路复用器
+IO多路复用指的是一个进程/线程可以同时监视多个文件描述符(含socket连接)，一旦其中的一个或者多个文件描述符可读或者可写，该监听进程/线程能够进行IO事件的查询。
+
 [img[截屏2022-06-05 23.04.31.png]]
 在IO多路复用模型中，引入了一种新的系统调用，查询IO的就绪状态。在Linux系统 中，对应的系统调用为select/poll/epoll系统调用
 
