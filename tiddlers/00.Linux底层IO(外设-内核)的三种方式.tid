@@ -1,0 +1,16 @@
+created: 20220605125433807
+creator: TidGiUser
+modified: 20220605132236364
+modifier: TidGiUser
+tags: IO fx
+title: 00.Linux底层IO(外设-内核)的三种方式
+type: text/vnd.tiddlywiki
+
+1. 内核主动轮询IO端口，最不可取（感觉像同步的）
+
+2. I/O 中断方式：指当数据到达时，磁盘主动向 CPU 发起中断请求，由 CPU 自身负责数据的传输过程（感觉像异步的）
+[img[imagefdsfsa.png]]
+
+3. DMA：全称叫直接内存存取（Direct Memory Access），是一种允许外围设备（硬件子系统）直接访问系统主内存的机制，优点：硬件-内核的复制不占用cpu时间
+
+[img[imagedma.png]]

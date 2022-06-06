@@ -1,0 +1,19 @@
+created: 20220605130147994
+creator: TidGiUser
+modified: 20220605132249820
+modifier: TidGiUser
+tags: IO fx
+title: 10.传统IO执行流程与零拷贝？
+type: text/vnd.tiddlywiki
+
+! 零拷贝的好处
+零拷贝（Zero-copy）技术指在计算机执行操作时，CPU 不需要先将数据从一个内存区域复制到另一个内存区域，从而可以减少上下文切换以及 CPU 的拷贝时间，实现零拷贝用到的最主要技术是 DMA 数据传输技术和内存区域映射技术。
+
+优点：
+
+1. 减少数据在内核缓冲区和用户进程缓冲区之间反复的 I/O 拷贝操作。
+
+2. 减少用户进程地址空间和内核地址空间之间因为上下文切换而带来的 CPU 开销。
+
+! 传统IO处理流程
+https://www.modb.pro/db/72811
