@@ -1,0 +1,23 @@
+created: 20220607084207333
+creator: TidGiUser
+modified: 20220607085839542
+modifier: TidGiUser
+tags: IO fx
+title: 41 reactor模式-手写netty-netty初级使用
+type: text/vnd.tiddlywiki
+
+! 手写netty
+这里应该和[[40.Reactor反应器模式]]联系起来，主要是msb的笔记。
+
+见项目reactor-test，包customnetty，其实就是一个多线程reactor模式的实现
+
+[img[截屏2022-06-07 16.50.40.png]]
+对上图的一个解释：
+
+netty的NioEventLoop，本质上就是将所有的连接（FD）分组，每组注册到一个selector上，由一个线程去处理。这样在单个线程内epoll_wait→accept→读→写是顺序调用的（reactor和多个fd的handler是串行执行的）
+
+最好的线程数量是：cpu cpu*2
+
+再进一步：拿出一些线程的selector就只关注accept（boss线程，只注册serversocket），然后把接收的客户端的fd，分配给其他线程的selector（worker线程）。避免高并发情况下，accept由于某个读写任务阻塞了，导致有些客户端就是连不进来，整体的用户体验是不好的。
+
+并且，所有boss线程，worker线程分别封装到Boss Group和Woker Group，由group自己去管理线程，自己决定fd注册到哪个selector上。用户角度就针对boss group直接bind就好了，至于到底哪个boss线程监听，应该是group自己的事情。同理，boss只针对worker group注册客户端就好了，group自己管理到底注册到哪个worker线程上。
