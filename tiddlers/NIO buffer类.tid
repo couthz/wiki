@@ -1,0 +1,34 @@
+created: 20220606082347791
+creator: TidGiUser
+modified: 20220607010446511
+modifier: TidGiUser
+tags: [[31.Java NIO]] fx
+title: NIO buffer类
+type: text/vnd.tiddlywiki
+
+! buffer及其子类
+''NIO的Buffer的内部是一个内存块(数组)，此类与普通的内存块(Java数组)不同的 是:NIO Buffer对象，提供了一组比较有效的方法，用来进行写入和读取的交替访问。''
+
+Buffer类是一个''抽象类''，对应于Java的主要数据类型，在NIO中有8种缓冲区类，分别如下:
+ByteBuffer、CharBuffer、DoubleBuffer、FloatBuffer、IntBuffer、LongBuffer、 ShortBuffer、MappedByteBuffer。
+前7种Buffer类型，覆盖了能在IO中传输的所有的Java基本数据类型。''第8种类型 MappedByteBuffer是专门用于内存映射的一种ByteBuffer类型''。不同的Buffer子类，其能操 作的数据类型能够通过名称进行判断，比如IntBuffer只能操作Integer类型的对象。
+
+''实际上''，''使用最多的还是ByteBuffer二进制字节缓冲区类型''
+
+> Buffer 类是一个非线程安全类。
+
+! 主要属性
+[img[截屏2022-06-06 16.28.17.png]]
+
+capacity无论是写入模式还是读入模式都是固定不变的
+
+写入模式下：limit会指向capacity，表示写入的最大位置。pos指向下一个写入的位置
+
+[img[截屏2022-06-06 16.35.16.png]]
+如果调用flip()转换读写模式，如果从写变为读，只需要将limit指向pos，pos指向开头就行。
+[img[截屏2022-06-06 16.35.29.png]]
+
+读变为写，将剩余未读推到头部，pos指向剩余未读的尾部+1(''limit-pos+1'')，limit指向尾部
+[img[截屏2022-06-06 16.40.46.png]]
+
+Buffer还有一个比较重要的标记属性:mark(标记)属性。该属性的大致作用为: 在缓冲区操作过程当中，可以将当前的position的值临时存入mark属性中;需要的时候，可以再从mark中取出暂存的标记值，恢复到position属性中，重新从position位置开始处理。

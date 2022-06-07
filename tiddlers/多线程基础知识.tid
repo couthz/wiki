@@ -1,18 +1,18 @@
 created: 20220526081657690
 creator: TidGiUser
-difficulty: 2.9212437903006574
-due: 20220607080657136
+difficulty: 2.021001132863404
+due: 20220702010432557
 grade: 2
-history: [{"due":"20220528140518710","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220526140518710"},{"due":"20220528140634642","interval":0,"difficulty":5.2,"stability":2,"retrievability":1,"grade":1,"lapses":0,"reps":2,"review":"20220526140634642"},{"due":"20220528140702062","interval":0,"difficulty":4.4,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":3,"review":"20220526140702062"},{"due":"20220528140710404","interval":0,"difficulty":3.6000000000000005,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":4,"review":"20220526140710404"},{"due":"20220528140722139","interval":0,"difficulty":2.8000000000000007,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":5,"review":"20220526140722139"},{"due":"20220530042919093","interval":3,"difficulty":3.853814968245463,"stability":1.4816364413634358,"retrievability":0.8538149682454624,"grade":0,"lapses":1,"reps":1,"review":"20220529042919092"}]
-interval: 2
+history: [{"due":"20220528140518710","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220526140518710"},{"due":"20220528140634642","interval":0,"difficulty":5.2,"stability":2,"retrievability":1,"grade":1,"lapses":0,"reps":2,"review":"20220526140634642"},{"due":"20220528140702062","interval":0,"difficulty":4.4,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":3,"review":"20220526140702062"},{"due":"20220528140710404","interval":0,"difficulty":3.6000000000000005,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":4,"review":"20220526140710404"},{"due":"20220528140722139","interval":0,"difficulty":2.8000000000000007,"stability":2,"retrievability":1,"grade":2,"lapses":0,"reps":5,"review":"20220526140722139"},{"due":"20220530042919093","interval":3,"difficulty":3.853814968245463,"stability":1.4816364413634358,"retrievability":0.8538149682454624,"grade":0,"lapses":1,"reps":1,"review":"20220529042919092"},{"due":"20220607080657136","interval":2,"difficulty":2.9212437903006574,"stability":6.98213019940065,"retrievability":0.8674288220551943,"grade":2,"lapses":1,"reps":2,"review":"20220531080657135"}]
+interval: 7
 lapses: 1
-modified: 20220601102800520
+modified: 20220607010432557
 modifier: TidGiUser
-reps: 2
-retrievability: 0.8674288220551943
-review: 20220531080657135
-stability: 6.98213019940065
-tags: 多线程 $:/tags/Commander/Working fx
+reps: 3
+retrievability: 0.8997573425627465
+review: 20220607010432557
+stability: 25.28195040512268
+tags: 多线程 $:/tags/Commander/Working fx ?
 title: 多线程基础知识
 tmap.id: 4309fdbd-dcd9-4a1c-9b6f-24376831a510
 type: text/vnd.tiddlywiki

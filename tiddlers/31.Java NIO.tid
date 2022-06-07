@@ -1,8 +1,8 @@
 created: 20220606065853855
 creator: TidGiUser
-modified: 20220606081546446
+modified: 20220606082345665
 modifier: TidGiUser
-tags: IO
+tags: IO fx
 title: 31.Java NIO
 type: text/vnd.tiddlywiki
 
@@ -71,6 +71,8 @@ IO多路复用编程的第一步，是把通道注册到选择器中，监听IO�
 
 第二步 则是通过选择器所提供的事件查询(select)方法，这些注册的通道是否有已经就绪的IO事 件(例如可读、可写、网络连接完成等)。
 
+> 编程实现的角度看select和epoll几乎是没什么区别的，只是内核实现上有了区别
+
 ''监听IO事件：表示通道某种IO操作已经就绪、或者说已经做好了准备''
 Java NIO将NIO事件进行了简化，只定义了四个事件，这四种事件用SelectionKey的四个常量来表示:
 
@@ -83,6 +85,11 @@ Java NIO将NIO事件进行了简化，只定义了四个事件，这四种事件
 ⚫ SelectionKey.OP_WRITE
 
 这个是用在[[多路复用流程|20.五种IO模型]]的选择器注册server.register(selector, SelectionKey.OP_ACCEpt)，表示内核会监听socket上的哪个事件，发生事件时才会触发回调（事件驱动？？[[异步回调|异步回调模式]]代替主动调用）
+
+!! 缓冲区(Buffer)
+''所谓通道的读取，就是将数据从通道读取到缓冲区中;所谓通道的写入，就是将数据 从缓冲区中写入到通道中。缓冲区的使用，是面向流进行读写操作的OIO所没有的，也是 NIO非阻塞的重要前提和基础之一''
+
+
 
 
 
