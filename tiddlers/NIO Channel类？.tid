@@ -1,0 +1,9 @@
+created: 20220607024445236
+creator: TidGiUser
+modified: 20220607025223729
+modifier: TidGiUser
+tags: [[31.Java NIO]] fx
+title: NIO Channel类？
+type: text/vnd.tiddlywiki
+
+>更广泛的层面来说，一个通道可以表示一个底层的文件描述符，例如硬件设备、文件、网络连接等。Java NIO的通道可以更加细化，例如对应不同的网络传输协议类型

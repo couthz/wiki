@@ -1,6 +1,6 @@
 created: 20220606082347791
 creator: TidGiUser
-modified: 20220607010446511
+modified: 20220607024432066
 modifier: TidGiUser
 tags: [[31.Java NIO]] fx
 title: NIO buffer类
@@ -28,7 +28,26 @@ capacity无论是写入模式还是读入模式都是固定不变的
 如果调用flip()转换读写模式，如果从写变为读，只需要将limit指向pos，pos指向开头就行。
 [img[截屏2022-06-06 16.35.29.png]]
 
-读变为写，将剩余未读推到头部，pos指向剩余未读的尾部+1(''limit-pos+1'')，limit指向尾部
+读变为写，将剩余未读推到头部(compact)，pos指向剩余未读的尾部+1(''limit-pos+1'')，limit指向尾部
 [img[截屏2022-06-06 16.40.46.png]]
 
 Buffer还有一个比较重要的标记属性:mark(标记)属性。该属性的大致作用为: 在缓冲区操作过程当中，可以将当前的position的值临时存入mark属性中;需要的时候，可以再从mark中取出暂存的标记值，恢复到position属性中，重新从position位置开始处理。
+
+! 主要方法
+allocate(100) 创建长度为100的缓冲区
+
+put() 写入缓冲区
+
+get() 读
+
+rewind() 倒带 从头开始读,position=0,mark标记会被清除
+
+mark() reset()
+
+flip() 写变读
+
+compact() clear() 都是读变写，前者是将已读的清除，后者是清空整个缓冲区
+
+mark() reset() 组合使用，前者记录position，后者恢复position
+
+

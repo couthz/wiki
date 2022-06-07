@@ -1,6 +1,6 @@
 created: 20220605132258227
 creator: TidGiUser
-modified: 20220606080349277
+modified: 20220607030541985
 modifier: TidGiUser
 tags: IO fx
 title: 20.五种IO模型
@@ -53,7 +53,7 @@ IO多路复用指的是一个进程/线程可以同时监视多个文件描述�
 1. 选择器注册：用户进程首先将需要read操作的目标文件描述符(socket 连接)，提前注册到Linux的epoll选择器中，在Java中所对应的选择器类是Selector 类。然后，才可以开启整个IO多路复用模型的轮询流程。
 
 > 如果是select/poll，这一步仅仅是在jvm中创建一个数组，然后把socket放进去。
-> 如果是epoll,会调用epoll_create，利用[[mmap|10.传统IO执行流程与零拷贝？]]创建共享空间,利用epoll_ctl将fd存入红黑树，监听fd上的事件
+> 如果是epoll,会调用epoll_create，利用[[mmap|10.传统IO执行流程与零拷贝？]]创建共享空间,利用epoll_ctl将fd存入红黑树，指定监听fd上的哪些[[IO事件|31.Java NIO]]
 
 2. 返回就绪状态的文件描述符列表：用户进程再选择这些就绪状态的socket完成read调用。
 
