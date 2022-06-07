@@ -1,0 +1,46 @@
+created: 20220607025243132
+creator: TidGiUser
+modified: 20220607052937310
+modifier: TidGiUser
+tags: IO fx
+title: 40.Reactor反应器模式
+type: text/vnd.tiddlywiki
+
+! 参考资料
+https://www.notion.so/1-d9a3ebd9a3a84630bca52405e6de9962
+
+! 定义
+反应器模式由Reactor反应器线程、Handlers处理器两大角色组成，两大角色的职责分别如下:
+
+(1)Reactor反应器线程的职责:负责响应IO事
+件，并且分发到Handlers处理器。 
+
+(2)Handlers处理器的职责:非阻塞的执行业务处理逻辑。
+
+>这里我猜测，也就是将IO模型中的等待数据和复制数据两步骤拆分开了
+
+为了之前的epoll衔接上，可以看看:
+[[对于msb课上epoll->netty的演变|https://www.notion.so/2-epoll-bd3f8388645b4f9bbfb28676d76502ed]]
+
+! 多线程OIO的致命缺陷
+[[Connection Per Thread模式的缺点|30.Java BIO]]
+如何解决Connection Per Thread模式的缺点呢，一个有效的途径是：使用Reactor反应器模式，对线程的数量进行控制，做到一个线程处理大量的连接。
+
+>（说到这儿，感觉reactor模式的基础就是[[多路复用器|20.五种IO模型]],因为''多路复用器就是实现了一个线程能监视多个连接数据的就绪情况''）
+> reactor模式就是将IO事件的查询，IO事件的处理封装成了组件。
+
+! 单线程Reactor模式
+Reactor反应器模式有点儿类似[[事件驱动模式]]。
+
+在事件驱动模式中，当有事件触发时，事件源会将事件dispatch分发到handler处理器，由处理器负责事件处理。而反应 器模式中的反应器角色，类似于事件驱动模式中的dispatcher事件分发器角色。
+具体来说，在反应器模式中，有Reactor反应器和Handler处理器两个重要的组件:
+
+(1)Reactor反应器:负责查询IO事件，当检测到一个IO事件，将其发送给相应的Handler处理器去处理。这里的IO事件，就是NIO中选择器查询出来的通道IO事件。
+
+(2)Handler处理器:与IO事件(或者选择键)绑定，负责IO事件的处理。完成真正的连接建立、通道的读取、处理业务逻辑、负责将结果写出到通道等。
+
+
+! 多线程Reactor模式
+
+是不是[[msb|https://www.notion.so/2-epoll-bd3f8388645b4f9bbfb28676d76502ed]]中的 netty 模型呢？？？
+
