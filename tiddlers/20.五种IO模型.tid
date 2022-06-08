@@ -1,8 +1,18 @@
 created: 20220605132258227
 creator: TidGiUser
-modified: 20220607030541985
+difficulty: 5
+due: 20220610080836854
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080836854
 modifier: TidGiUser
-tags: IO fx
+reps: 1
+retrievability: 1
+review: 20220608080836853
+stability: 2
+tags: IO fx ?
 title: 20.五种IO模型
 type: text/vnd.tiddlywiki
 

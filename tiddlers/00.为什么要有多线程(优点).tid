@@ -1,8 +1,18 @@
 created: 20220526150927909
 creator: TidGiUser
-modified: 20220601102800513
+difficulty: 5
+due: 20220610080742009
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080742010
 modifier: TidGiUser
-tags: 多线程基础知识 $:/tags/Commander/Working fx
+reps: 1
+retrievability: 1
+review: 20220608080742009
+stability: 2
+tags: 多线程基础知识 $:/tags/Commander/Working fx ?
 title: 00.为什么要有多线程(优点)
 tmap.id: 217dafda-fecc-499a-a4a0-195d5a844896
 type: text/vnd.tiddlywiki

@@ -1,8 +1,18 @@
 created: 20220602160316204
 creator: TidGiUser
-modified: 20220602160440149
+difficulty: 5
+due: 20220610080824281
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080824281
 modifier: TidGiUser
-tags: 计算机底层 IO fx
+reps: 1
+retrievability: 1
+review: 20220608080824281
+stability: 2
+tags: 计算机底层 IO fx ?
 title: 中断
 type: text/vnd.tiddlywiki
 

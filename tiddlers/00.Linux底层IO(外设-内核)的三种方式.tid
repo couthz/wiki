@@ -1,8 +1,18 @@
 created: 20220605125433807
 creator: TidGiUser
-modified: 20220605132236364
+difficulty: 5
+due: 20220610080830060
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080830060
 modifier: TidGiUser
-tags: IO fx
+reps: 1
+retrievability: 1
+review: 20220608080830060
+stability: 2
+tags: IO fx ?
 title: 00.Linux底层IO(外设-内核)的三种方式
 type: text/vnd.tiddlywiki
 

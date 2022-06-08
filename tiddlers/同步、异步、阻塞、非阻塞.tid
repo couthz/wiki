@@ -1,8 +1,18 @@
 created: 20220601064510813
 creator: TidGiUser
-modified: 20220603161633226
+difficulty: 5
+due: 20220610080816769
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080816769
 modifier: TidGiUser
-tags: 异步回调模式 IO $:/tags/Commander/Working fx
+reps: 1
+retrievability: 1
+review: 20220608080816769
+stability: 2
+tags: 异步回调模式 IO $:/tags/Commander/Working fx ?
 title: 同步、异步、阻塞、非阻塞
 tmap.id: 92fe3518-42f9-4dba-863a-d08f9f27e957
 type: text/vnd.tiddlywiki

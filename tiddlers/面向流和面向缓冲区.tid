@@ -1,8 +1,18 @@
 created: 20220603153657051
 creator: TidGiUser
-modified: 20220603153822056
+difficulty: 5
+due: 20220610080827889
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080827889
 modifier: TidGiUser
-tags: IO fx
+reps: 1
+retrievability: 1
+review: 20220608080827889
+stability: 2
+tags: IO fx ?
 title: 面向流和面向缓冲区
 type: text/vnd.tiddlywiki
 

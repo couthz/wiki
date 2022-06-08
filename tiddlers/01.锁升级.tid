@@ -1,8 +1,18 @@
 created: 20220531075018152
 creator: TidGiUser
-modified: 20220601102800515
+difficulty: 5
+due: 20220610080810265
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080810265
 modifier: TidGiUser
-tags: [[00 Synchronized]] $:/tags/Commander/Working fx
+reps: 1
+retrievability: 1
+review: 20220608080810265
+stability: 2
+tags: [[00 Synchronized]] $:/tags/Commander/Working fx ?
 title: 01.锁升级
 tmap.id: 25b58d28-8613-46ae-a3cc-1f86fc347906
 type: text/vnd.tiddlywiki

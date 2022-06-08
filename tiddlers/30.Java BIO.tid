@@ -1,8 +1,18 @@
 created: 20220606053055373
 creator: TidGiUser
-modified: 20220606065914780
+difficulty: 5
+due: 20220610080846009
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080846009
 modifier: TidGiUser
-tags: IO fx
+reps: 1
+retrievability: 1
+review: 20220608080846009
+stability: 2
+tags: IO fx ?
 title: 30.Java BIO
 type: text/vnd.tiddlywiki
 

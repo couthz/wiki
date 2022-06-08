@@ -1,8 +1,18 @@
 created: 20220605130147994
 creator: TidGiUser
-modified: 20220605132249820
+difficulty: 5
+due: 20220610080832206
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080832206
 modifier: TidGiUser
-tags: IO fx
+reps: 1
+retrievability: 1
+review: 20220608080832206
+stability: 2
+tags: IO fx ?
 title: 10.传统IO执行流程与零拷贝？
 type: text/vnd.tiddlywiki
 

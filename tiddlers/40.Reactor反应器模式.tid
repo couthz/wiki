@@ -1,8 +1,18 @@
 created: 20220607025243132
 creator: TidGiUser
-modified: 20220607080843538
+difficulty: 5
+due: 20220610080905860
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080905860
 modifier: TidGiUser
-tags: IO fx
+reps: 1
+retrievability: 1
+review: 20220608080905860
+stability: 2
+tags: IO fx ?
 title: 40.Reactor反应器模式
 type: text/vnd.tiddlywiki
 

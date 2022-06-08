@@ -1,8 +1,18 @@
 created: 20220526083156960
 creator: TidGiUser
-modified: 20220601102800519
+difficulty: 5
+due: 20220610080737106
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220608080737106
 modifier: TidGiUser
-tags: 多线程基础知识 $:/tags/Commander/Working fx
+reps: 1
+retrievability: 1
+review: 20220608080737106
+stability: 2
+tags: 多线程基础知识 $:/tags/Commander/Working fx ?
 title: 30.线程状态,Thread类常用方法
 tmap.id: e065a1e3-b73e-499a-ba36-d048b1089030
 type: text/vnd.tiddlywiki
