@@ -6,7 +6,7 @@ grade: -1
 history: []
 interval: 0
 lapses: 0
-modified: 20220610073319965
+modified: 20220610075759196
 modifier: TidGiUser
 reps: 1
 retrievability: 1
@@ -159,6 +159,7 @@ public class IntegerAddDecoder extends ReplayingDecoder<IntegerAddDecoder.PHASE>
 
                 first = in.readInt();
 //checkPoint除了变更state,还可以保存当前bytebuf的读指针
+//其实如果用getInt,也就不会移动读指针,并且读指针的位置会保留到下次解码
                 checkpoint(PHASE.PHASE_2);
                 break;
 
