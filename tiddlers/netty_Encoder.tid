@@ -1,0 +1,16 @@
+created: 20220610073336878
+creator: TidGiUser
+modified: 20220610074250931
+modifier: TidGiUser
+tags: netty fx
+title: netty:Encoder
+type: text/vnd.tiddlywiki
+
+对比着Decoder去理解就好了
+
+也有MessageToByteEncoder编码器和MessageToMessageEncoder编码器
+
+''注意：执行的顺序和添加顺序相反
+''
+
+测试的时候，channel的write是用户程序的角度往channel里写，准备发送给对方的数据，而writeInBound是模拟对方发送过来的数据入站，readOutBound读出出站数据

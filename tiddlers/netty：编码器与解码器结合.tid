@@ -1,0 +1,27 @@
+created: 20220610074601218
+creator: TidGiUser
+modified: 20220610074757618
+modifier: TidGiUser
+tags: netty fx
+title: netty：编码器与解码器结合
+type: text/vnd.tiddlywiki
+
+! 继承ByteToMessageCodec编解码器
+
+不够灵活
+
+! CombinedChannelDuplexHandler 组合器
+
+```java
+public class IntegerDuplexHandler extends CombinedChannelDuplexHandler<
+           Byte2IntegerDecoder, Integer2ByteEncoder>
+    {
+       public IntegerDuplexHandler() {
+           super(new Byte2IntegerDecoder(), new Integer2ByteEncoder());
+       }
+}
+```
+
+需要组合的时候就组合，pipeline添加handler的时候可以少加一次
+
+不要组合的时候就单独使用
