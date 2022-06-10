@@ -6,7 +6,7 @@ grade: -1
 history: []
 interval: 0
 lapses: 0
-modified: 20220610060221450
+modified: 20220610062235725
 modifier: TidGiUser
 reps: 1
 retrievability: 1
@@ -187,3 +187,5 @@ public class IntegerAddDecoder extends ReplayingDecoder<IntegerAddDecoder.PHASE>
 ''1.约定协议，请求头长度固定，请求体长度写在头部中''(联想：[[redis数据结构]])
 
 2.分隔符
+
+>对比一下msb课上写的分包解码器，其实基于ReplayingDecoder的分阶段解码，挺适合进行这种协议处理：1. 省去了循环和长度判断  2.每次循环走不同的分支。
