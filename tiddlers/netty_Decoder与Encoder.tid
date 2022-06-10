@@ -1,0 +1,33 @@
+created: 20220609085621829
+creator: TidGiUser
+difficulty: 5
+due: 20220611085658235
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220610015901692
+modifier: TidGiUser
+reps: 1
+retrievability: 1
+review: 20220609085658235
+stability: 2
+tags: netty fx ?
+title: netty:Decoder与Encoder
+type: text/vnd.tiddlywiki
+
+! 简介
+Netty从底层Java通道读到ByteBuf二进制数据，传入Netty通道的流水线，随后开始入站处理。
+
+在入站处理过程中，需要将ByteBuf二进制类型，解码成Java POJO对象。这个解 码过程，可以通过Netty的Decoder(解码器)去完成。
+
+在出站处理过程中，业务处理后的结果(出站数据)，需要从某个Java POJO对象，编 码为最终的ByteBuf二进制数据，然后通过底层Java通道发送到对端。在编码过程中，需要用到Netty的Encoder(编码器)去完成数据的编码工作。
+
+! Decoder
+什么是Netty的解码器呢?:
+
+Netty中的解码器，都是Inbound入站处理器类型，几乎都直接或者间接地实现了入站处理的超级接口ChannelInboundHandler。
+
+解码器负责处理“入站数据”。 它能将上一站Inbound入站处理器传过来的输入(Input)数据，进行数据的解码或者格式转换，然后发送到下一站Inbound入站处理器。 
+
+Netty内置了这个解码器，叫做ByteToMessageDecoder。 

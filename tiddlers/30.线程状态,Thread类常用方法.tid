@@ -1,17 +1,17 @@
 created: 20220526083156960
 creator: TidGiUser
-difficulty: 5
-due: 20220610080737106
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080737106
+difficulty: 6.1000000000000005
+due: 20220611004013855
+grade: 0
+history: [{"due":"20220610080737106","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080737106"}]
+interval: 2
+lapses: 1
+modified: 20220610004013855
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080737106
-stability: 2
+retrievability: 0.9
+review: 20220610004013854
+stability: 1.4816364413634358
 tags: 多线程基础知识 $:/tags/Commander/Working fx ?
 title: 30.线程状态,Thread类常用方法
 tmap.id: e065a1e3-b73e-499a-ba36-d048b1089030

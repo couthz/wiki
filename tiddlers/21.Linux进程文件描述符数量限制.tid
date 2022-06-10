@@ -1,17 +1,17 @@
 created: 20220606020323592
 creator: TidGiUser
-difficulty: 5
-due: 20220610080840472
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080840473
+difficulty: 6.1000000000000005
+due: 20220611004308249
+grade: 0
+history: [{"due":"20220610080840472","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080840472"}]
+interval: 2
+lapses: 1
+modified: 20220610004308249
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080840472
-stability: 2
+retrievability: 0.9
+review: 20220610004308249
+stability: 1.4816364413634358
 tags: IO fx ?
 title: 21.Linux进程文件描述符数量限制
 type: text/vnd.tiddlywiki

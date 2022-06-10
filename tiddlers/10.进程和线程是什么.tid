@@ -1,17 +1,17 @@
 created: 20220526113454162
 creator: TidGiUser
-difficulty: 5
-due: 20220610080739908
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080739908
+difficulty: 6.1000000000000005
+due: 20220611003935877
+grade: 0
+history: [{"due":"20220610080739908","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080739908"}]
+interval: 2
+lapses: 1
+modified: 20220610003935877
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080739908
-stability: 2
+retrievability: 0.9
+review: 20220610003935877
+stability: 1.4816364413634358
 tags: 多线程基础知识 $:/tags/Commander/Working fx ?
 title: 10.进程和线程是什么
 tmap.id: c4a70894-83ab-4a70-be67-72314c47ab27

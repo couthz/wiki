@@ -1,17 +1,17 @@
 created: 20220526150927909
 creator: TidGiUser
-difficulty: 5
-due: 20220610080742009
-grade: -1
-history: []
-interval: 0
+difficulty: 5.1000000000000005
+due: 20220616003837611
+grade: 1
+history: [{"due":"20220610080742009","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080742009"}]
+interval: 2
 lapses: 0
-modified: 20220608080742010
+modified: 20220610003837611
 modifier: TidGiUser
-reps: 1
-retrievability: 1
-review: 20220608080742009
-stability: 2
+reps: 2
+retrievability: 0.9
+review: 20220610003837610
+stability: 5.512139752431654
 tags: 多线程基础知识 $:/tags/Commander/Working fx ?
 title: 00.为什么要有多线程(优点)
 tmap.id: 217dafda-fecc-499a-a4a0-195d5a844896

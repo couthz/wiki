@@ -1,17 +1,17 @@
 created: 20220606065853855
 creator: TidGiUser
-difficulty: 5
-due: 20220610080855727
-grade: -1
-history: []
-interval: 0
+difficulty: 5.1000000000000005
+due: 20220616014250933
+grade: 1
+history: [{"due":"20220610080855727","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080855727"}]
+interval: 2
 lapses: 0
-modified: 20220608080855727
+modified: 20220610014250933
 modifier: TidGiUser
-reps: 1
-retrievability: 1
-review: 20220608080855727
-stability: 2
+reps: 2
+retrievability: 0.9
+review: 20220610014250932
+stability: 5.512139752431654
 tags: IO fx ?
 title: 31.Java NIO
 type: text/vnd.tiddlywiki

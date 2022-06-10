@@ -1,17 +1,17 @@
 created: 20220531053639917
 creator: TidGiUser
-difficulty: 5
-due: 20220610080756779
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080756779
+difficulty: 6.1000000000000005
+due: 20220611004017428
+grade: 0
+history: [{"due":"20220610080756779","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080756778"}]
+interval: 2
+lapses: 1
+modified: 20220610004017428
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080756778
-stability: 2
+retrievability: 0.9
+review: 20220610004017427
+stability: 1.4816364413634358
 tags: 多线程 01.多线程缺点 $:/tags/Commander/Working fx ?
 title: 线程安全:原子性
 tmap.id: cd2101db-5d0f-4319-b22f-f6ab0bac6ca4

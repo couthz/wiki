@@ -1,17 +1,17 @@
 created: 20220531075018152
 creator: TidGiUser
-difficulty: 5
-due: 20220610080810265
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080810265
+difficulty: 6.1000000000000005
+due: 20220611003921485
+grade: 0
+history: [{"due":"20220610080810265","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080810265"}]
+interval: 2
+lapses: 1
+modified: 20220610003921486
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080810265
-stability: 2
+retrievability: 0.9
+review: 20220610003921485
+stability: 1.4816364413634358
 tags: [[00 Synchronized]] $:/tags/Commander/Working fx ?
 title: 01.锁升级
 tmap.id: 25b58d28-8613-46ae-a3cc-1f86fc347906

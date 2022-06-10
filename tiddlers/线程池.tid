@@ -1,17 +1,17 @@
 created: 20220526153907571
 creator: TidGiUser
-difficulty: 5
-due: 20220610080743324
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080743324
+difficulty: 6.1000000000000005
+due: 20220611003946947
+grade: 0
+history: [{"due":"20220610080743324","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080743324"}]
+interval: 2
+lapses: 1
+modified: 20220610003946947
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080743324
-stability: 2
+retrievability: 0.9
+review: 20220610003946947
+stability: 1.4816364413634358
 tags: 多线程 $:/tags/Commander/Working fx ?
 title: 线程池
 tmap.id: ade0c3aa-52d8-4968-8e60-a0bedd36323e

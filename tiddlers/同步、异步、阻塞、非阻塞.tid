@@ -1,33 +1,22 @@
 created: 20220601064510813
 creator: TidGiUser
-difficulty: 5
-due: 20220610080816769
-grade: -1
-history: []
-interval: 0
+difficulty: 5.1000000000000005
+due: 20220616003204457
+grade: 1
+history: [{"due":"20220610080816769","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080816769"}]
+interval: 2
 lapses: 0
-modified: 20220608080816769
+modified: 20220610003204457
 modifier: TidGiUser
-reps: 1
-retrievability: 1
-review: 20220608080816769
-stability: 2
+reps: 2
+retrievability: 0.9
+review: 20220610003204456
+stability: 5.512139752431654
 tags: 异步回调模式 IO $:/tags/Commander/Working fx ?
 title: 同步、异步、阻塞、非阻塞
 tmap.id: 92fe3518-42f9-4dba-863a-d08f9f27e957
 type: text/vnd.tiddlywiki
 
-''因为有[[缓冲区]],用户IO，也就是系统调用read和write，做的只是用户缓冲区和内核缓冲区之间的搬运，但是数据的流动还包括内核缓冲区和外设之间的流动。''
-
-所以同步IO(read)指的就是用户进程主动发起IO，完成系统调用，直到内核完成数据的复制之后，系统调用返回，''复制过程''中用户进程一定阻塞
-
-阻塞IO，指的是用户进程在内核数据还没准备好时也会阻塞。
-
-非阻塞socket的read操作，用户进程在内核数据还没准备好时不会阻塞，会立即返回。
-
-多路复用器。。。
-
----
 
 解释一下阻塞与非阻塞。
 

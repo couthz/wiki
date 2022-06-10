@@ -1,17 +1,17 @@
 created: 20220526083006491
 creator: TidGiUser
-difficulty: 5
-due: 20220610080729896
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080729896
+difficulty: 6.1000000000000005
+due: 20220611004007011
+grade: 0
+history: [{"due":"20220610080729896","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080729895"}]
+interval: 2
+lapses: 1
+modified: 20220610004007011
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080729895
-stability: 2
+retrievability: 0.9
+review: 20220610004007011
+stability: 1.4816364413634358
 tags: 多线程基础知识 $:/tags/Commander/Working fx ?
 title: 20.创建线程的方式
 tmap.id: 0980df86-b37c-4aa2-8849-08695b987e88

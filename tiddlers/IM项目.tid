@@ -1,9 +1,21 @@
 created: 20220603143927053
 creator: TidGiUser
-modified: 20220603143942785
+modified: 20220609085349564
 modifier: TidGiUser
 tags: 技术
 title: IM项目
 type: text/vnd.tiddlywiki
 
 见卷1第一章
+
+命令收集
+
+先把session类的设计讲一遍，它是一个公共类 8.3.3 8.5
+
+视频的讲解不是按照面向过程的方式，一个功能一个功能的讲
+
+>每一课的功能都按照模块内部设计过一遍
+
+自底向上？？？
+
+还是把编解码流程啰嗦一下 8.1

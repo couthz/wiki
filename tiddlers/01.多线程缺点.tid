@@ -1,17 +1,17 @@
 created: 20220531070009555
 creator: TidGiUser
-difficulty: 5
-due: 20220610080801975
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080801975
+difficulty: 6.1000000000000005
+due: 20220611004036296
+grade: 0
+history: [{"due":"20220610080801975","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080801975"}]
+interval: 2
+lapses: 1
+modified: 20220610004036296
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080801975
-stability: 2
+retrievability: 0.9
+review: 20220610004036296
+stability: 1.4816364413634358
 tags: 多线程基础知识 $:/tags/Commander/Working fx ?
 title: 01.多线程缺点
 tmap.id: 526cfe3c-e334-4f2a-b635-d408e18fcd1e

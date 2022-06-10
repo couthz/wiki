@@ -1,17 +1,17 @@
 created: 20220601154935211
 creator: TidGiUser
-difficulty: 5
-due: 20220610080822119
-grade: -1
-history: []
-interval: 0
+difficulty: 5.1000000000000005
+due: 20220616013853132
+grade: 1
+history: [{"due":"20220610080822119","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080822119"}]
+interval: 2
 lapses: 0
-modified: 20220608080822120
+modified: 20220610013853132
 modifier: TidGiUser
-reps: 1
-retrievability: 1
-review: 20220608080822119
-stability: 2
+reps: 2
+retrievability: 0.9
+review: 20220610013853132
+stability: 5.512139752431654
 tags: 技术 fx ?
 title: IO
 type: text/vnd.tiddlywiki

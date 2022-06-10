@@ -1,17 +1,17 @@
 created: 20220526154937092
 creator: TidGiUser
-difficulty: 5
-due: 20220610080745260
-grade: -1
-history: []
-interval: 0
+difficulty: 5.1000000000000005
+due: 20220616003853692
+grade: 1
+history: [{"due":"20220610080745260","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080745260"}]
+interval: 2
 lapses: 0
-modified: 20220608080745260
+modified: 20220610003853692
 modifier: TidGiUser
-reps: 1
-retrievability: 1
-review: 20220608080745260
-stability: 2
+reps: 2
+retrievability: 0.9
+review: 20220610003853692
+stability: 5.512139752431654
 tags: 线程池 $:/tags/Commander/Working fx ?
 title: 00.为什么要有线程池
 tmap.id: 166b5850-e27f-47f5-b5c2-2e06726dc68b

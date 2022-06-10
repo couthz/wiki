@@ -1,17 +1,17 @@
 created: 20220527083900492
 creator: TidGiUser
-difficulty: 5
-due: 20220610080754959
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080754959
+difficulty: 6.1000000000000005
+due: 20220611004000273
+grade: 0
+history: [{"due":"20220610080754959","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080754959"}]
+interval: 2
+lapses: 1
+modified: 20220610004000273
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080754959
-stability: 2
+retrievability: 0.9
+review: 20220610004000273
+stability: 1.4816364413634358
 tags: 线程池 $:/tags/Commander/Working fx ?
 title: 11.线程池源码ThreadPoolExecutor（未完成）
 tmap.id: 3ba10b48-3ab9-4481-9f61-c5f76dd081ff

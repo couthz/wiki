@@ -1,17 +1,17 @@
 created: 20220602160316204
 creator: TidGiUser
-difficulty: 5
-due: 20220610080824281
-grade: -1
-history: []
-interval: 0
+difficulty: 5.1000000000000005
+due: 20220616004041951
+grade: 1
+history: [{"due":"20220610080824281","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080824281"}]
+interval: 2
 lapses: 0
-modified: 20220608080824281
+modified: 20220610004041951
 modifier: TidGiUser
-reps: 1
-retrievability: 1
-review: 20220608080824281
-stability: 2
+reps: 2
+retrievability: 0.9
+review: 20220610004041950
+stability: 5.512139752431654
 tags: 计算机底层 IO fx ?
 title: 中断
 type: text/vnd.tiddlywiki

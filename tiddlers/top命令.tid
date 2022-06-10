@@ -1,17 +1,17 @@
 created: 20220606064413713
 creator: TidGiUser
-difficulty: 5
-due: 20220610080850413
-grade: -1
-history: []
-interval: 0
-lapses: 0
-modified: 20220608080850413
+difficulty: 6.1000000000000005
+due: 20220611014258284
+grade: 0
+history: [{"due":"20220610080850413","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080850413"}]
+interval: 2
+lapses: 1
+modified: 20220610014258284
 modifier: TidGiUser
 reps: 1
-retrievability: 1
-review: 20220608080850413
-stability: 2
+retrievability: 0.9
+review: 20220610014258284
+stability: 1.4816364413634358
 tags: 系统监控 fx ?
 title: top命令
 type: text/vnd.tiddlywiki

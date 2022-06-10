@@ -1,17 +1,17 @@
 created: 20220603151314294
 creator: TidGiUser
-difficulty: 5
-due: 20220610080826488
-grade: -1
-history: []
-interval: 0
+difficulty: 5.1000000000000005
+due: 20220616014225334
+grade: 1
+history: [{"due":"20220610080826488","interval":0,"difficulty":5,"stability":2,"retrievability":1,"grade":-1,"lapses":0,"reps":1,"review":"20220608080826488"}]
+interval: 2
 lapses: 0
-modified: 20220608080826488
+modified: 20220610014225334
 modifier: TidGiUser
-reps: 1
-retrievability: 1
-review: 20220608080826488
-stability: 2
+reps: 2
+retrievability: 0.9
+review: 20220610014225334
+stability: 5.512139752431654
 tags: fx IO ?
 title: 缓冲区
 type: text/vnd.tiddlywiki
