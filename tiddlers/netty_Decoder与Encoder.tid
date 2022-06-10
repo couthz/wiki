@@ -6,7 +6,7 @@ grade: -1
 history: []
 interval: 0
 lapses: 0
-modified: 20220610015901692
+modified: 20220610060221450
 modifier: TidGiUser
 reps: 1
 retrievability: 1
@@ -30,4 +30,160 @@ Netty中的解码器，都是Inbound入站处理器类型，几乎都直接或�
 
 解码器负责处理“入站数据”。 它能将上一站Inbound入站处理器传过来的输入(Input)数据，进行数据的解码或者格式转换，然后发送到下一站Inbound入站处理器。 
 
-Netty内置了这个解码器，叫做ByteToMessageDecoder。 
+Netty内置了这个解码器，叫做ByteToMessageDecoder。
+
+!! 基础抽象类：ByteToMessageDecoder
+
+ByteToMessageDecoder将上一站传过来的输入到Bytebuf中的数据进行解码,解码出一个List对象列表;
+
+然后，迭代List列表，逐个将Java POJO对象传入下一站Inbound入站处理器。
+
+当然ByteToMessageDecoder是抽象类，只是以[[模版方法模式]]实现了上述流程，decode()还是要由子类实现。
+
+[img[截屏2022-06-10 10.10.36.png]]
+
+测试：
+
+>单元测试专用的channel：EmbeddedChannel
+> [img[截屏2022-06-10 10.39.59.png]]
+
+<<<
+引用计数的问题?????
+
+最后说明一下:ByteToMessageDecoder传递给下一站的是解码之后的Java POJO对象， 不是ByteBuf缓冲区。问题来了，ByteBuf缓冲区并没有发送到流水线的TailContext尾部处理 器，将由谁负责释放引用计数呢?其实，基类ByteToMessageDecoder会完成ByteBuf释放工 作，它会调用ReferenceCountUtil.release(in)方法，将之前的ByteBuf缓冲区的引用数减1。
+
+也有同学会问:这个ByteBuf被释放了，但是，如果在后面还需要用到，怎么办呢?可 以在子类的decode方法中调用一次ReferenceCountUtil.retain(in)来增加一次引用计数，不过 在使用完成后，要将及时地将自己增加的这次计数减去。
+<<<
+
+这个测试的套路可以反复使用：
+
+```java
+//decoder
+public class Byte2IntegerDecoder extends ByteToMessageDecoder {
+    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf in, List<Object> out) throws Exception {
+
+        while (in.readableBytes() >= 4) {
+            int i = in.readInt();
+
+            log.info("解码出一个整数"+i);
+            out.add(i);
+        }
+    }
+}
+
+//再接一个入站处理器
+public class IntegerProcessHandler extends ChannelInboundHandlerAdapter {
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        Integer integer = (Integer) msg;
+        log.info("打印出一个整数" + integer);
+    }
+}
+
+//测试
+public class Byte2IntegerDecoderTester {
+
+    @Test
+    public void testByteToIntegerDecoder() {
+        ChannelInitializer<EmbeddedChannel> i = new ChannelInitializer<EmbeddedChannel>() {
+
+            protected void initChannel(EmbeddedChannel ch) throws Exception {
+                ch.pipeline().addLast(new Byte2IntegerDecoder());
+                ch.pipeline().addLast(new IntegerProcessHandler());
+            }
+        };
+
+        //EmbeddedChannel并不需要注册到eventLoop上,主线程同步地操作它就行
+        EmbeddedChannel channel = new EmbeddedChannel(i);
+        for (int j = 0; j < 100; j++) {
+            ByteBuf buf = Unpooled.buffer();
+            buf.writeInt(j); //直接在用户空间模拟一个buf,而不是从内核复制过来数据
+            channel.writeInbound(buf);
+        }
+    }
+}
+```
+
+!! ReplayingDecoder
+
+ReplayingDecoder关键词：反复，分阶段
+
+Byte2IntegerDecoder可以用一个更简单的ReplayingDecoder代替
+ReplayingDecoder类是ByteToMessageDecoder的子类。其作用是:
+
+⚫ ''反复''按照decode的逻辑读取ByteBuf缓冲区
+
+⚫ 在读取的数据之前，需要检查缓冲区是否有足够的字节。若ByteBuf中有足够的字节，则会正常读取;反之，如果没有足够的字节，则会停止解码。
+
+!!! 最简单的整数解码器
+通过这个示例程序，我们可以看到:继承ReplayingDecoder实现一个解码器，就不用编 写长度判断的代码。ReplayingDecoder进行长度判断的原理，其实很简单:它的内部定义了 一个新的二进制缓冲区类，对ByteBuf缓冲区进行了装饰，这个类名为 ReplayingDecoderBuffer。该装饰器的特点是:在缓冲区真正读数据之前，首先进行长度的 判断:如果长度合格，则读取数据;否则，抛出ReplayError。''ReplayingDecoder捕获到 ReplayError后，会留着数据，等待下一次IO事件到来时再读取''。
+
+> 其实就是不用写while判断长度了，''看起来适合固定长度分包的场景，比如数据都是整数''
+> 然而实际上上面这个想法不完全正确，加入了state属性其实可以提升一定的灵活性
+```java
+public class Byte2IntegerReplayDecoder extends ReplayingDecoder {
+       @Override
+       public void decode(ChannelHandlerContext ctx,
+                                    ByteBuf in, List<Object> out) {
+																		int i = in.readInt(); 
+																		Logger.info("解码出一个整数: " + i); 
+																		out.add(i);
+} }
+
+```
+实质上，ReplayingDecoder的作用远远不止于进行长度判断，它更重要的作用是用于分包传输的应用场景：
+
+!!! 整数相加解码器：分阶段解码
+
+state属性，提升了一定的灵活性，例如这个将数字两两一组相加的案例，''相当于ReplayDecoder每两次处理完一组数组''
+
+```java
+//state类型在泛型中
+public class IntegerAddDecoder extends ReplayingDecoder<IntegerAddDecoder.PHASE> {
+
+    //分为两个阶段
+    enum PHASE {
+        PHASE_1,
+        PHASE_2
+    }
+    private int first;
+    private int second;
+
+    public IntegerAddDecoder() {
+        //初始化为第一阶段
+        super(PHASE.PHASE_1);
+    }
+
+    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf in, List<Object> out) throws Exception {
+        switch (state()) {
+            case PHASE_1:
+
+                first = in.readInt();
+//checkPoint除了变更state,还可以保存当前bytebuf的读指针
+                checkpoint(PHASE.PHASE_2);
+                break;
+
+            case PHASE_2:
+                second = in.readInt();
+                Integer sum = first + second;
+                out.add(sum);
+
+                checkpoint(PHASE.PHASE_1);
+                break;
+            default:
+                break;
+        }
+    }
+}
+```
+>''这里的decoder就是有状态的，也就不适合给多个channel共享了''
+
+!!! 字符串分包解码器
+在原理上，字符串分包解码和整数分包解码是一样的。''有所不同的是:整数的长度是固定的，目前在Java中是4个字节;而字符串的长度不是固定的，是可变长度的。''
+
+解决办法：
+
+''1.约定协议，请求头长度固定，请求体长度写在头部中''(联想：[[redis数据结构]])
+
+2.分隔符
