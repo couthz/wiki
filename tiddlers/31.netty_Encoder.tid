@@ -1,9 +1,9 @@
 created: 20220610073336878
 creator: TidGiUser
-modified: 20220610074250931
+modified: 20220611125716514
 modifier: TidGiUser
 tags: netty fx
-title: netty:Encoder
+title: 31.netty:Encoder
 type: text/vnd.tiddlywiki
 
 对比着Decoder去理解就好了

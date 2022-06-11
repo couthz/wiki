@@ -1,9 +1,9 @@
 created: 20220610084203854
 creator: TidGiUser
-modified: 20220610135135375
+modified: 20220611125746740
 modifier: TidGiUser
 tags: netty fx java基础
-title: 序列化与反序列化
+title: 40.序列化与反序列化
 type: text/vnd.tiddlywiki
 
 ! 什么是序列化和反序列化

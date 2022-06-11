@@ -1,9 +1,9 @@
 created: 20220610074601218
 creator: TidGiUser
-modified: 20220610074757618
+modified: 20220611125728034
 modifier: TidGiUser
 tags: netty fx
-title: netty：编码器与解码器结合
+title: 32.netty：编码器与解码器结合
 type: text/vnd.tiddlywiki
 
 ! 继承ByteToMessageCodec编解码器
