@@ -1,0 +1,24 @@
+created: 20220611130003157
+creator: TidGiUser
+modified: 20220611131137800
+modifier: TidGiUser
+tags: 41.Json,Protobuf编解码实践案例
+title: 33.粘包和半包
+type: text/vnd.tiddlywiki
+
+! 问题根源
+TCP是个流协议，所谓流，就是没有界限的一连串数据，TCP底层不了解业务数据的含义。
+
+所以发包时，会根据TCP缓冲区的实际情况进行包拆分或者合并
+
+接收时，也可能可能会将一个底层包分成多次ByteBuf，或者把多个底层包合并
+
+! 解决
+
+如何解决呢?基本思路是，在接收端，Netty程序需要根据自定义协议，将读取到的进程缓冲区ByteBuf，在应用层进行二次组装，重新组装我们应用层的数据包。''接收端的这个过程通常也称为分包，或者叫做拆包''。
+
+在Netty中分包的方法，从第6章可知，主要有两种方法:
+
+(1)可以自定义解码器分包器:基于ByteToMessageDecoder或者ReplayingDecoder， 定义自己的用户缓冲区分包器。
+
+(2)使用Netty内置的解码器。如可以使用Netty内置的LengthFieldBasedFrameDecoder 自定义长度数据包解码器，对用户缓冲区ByteBuf进行正确的分包，这种不用自己写分包逻辑。

@@ -6,13 +6,13 @@ grade: -1
 history: []
 interval: 0
 lapses: 0
-modified: 20220611125703565
+modified: 20220611131527346
 modifier: TidGiUser
 reps: 1
 retrievability: 1
 review: 20220609085658235
 stability: 2
-tags: netty fx ?
+tags: 41.Json,Protobuf编解码实践案例 fx ?
 title: 30.netty:Decoder
 type: text/vnd.tiddlywiki
 
@@ -242,6 +242,8 @@ public class StringReplyDecoder extends ReplayingDecoder<StringReplyDecoder.PHAS
 ```
 
 ! 常用内置解码器
+
+> 注意：这几种解码的结果并不是string,而是bytebuf
 
 !! 固定长度数据包解码器——FixedLengthFrameDecoder
 适用场景:每个接收到的数据包的长度，都是固定的，例如100个字节。
