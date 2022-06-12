@@ -1,0 +1,14 @@
+created: 20220611151903432
+creator: TidGiUser
+modified: 20220611151951766
+modifier: TidGiUser
+tags: netty fx
+title: 41.Json,protobuf案例
+type: text/vnd.tiddlywiki
+
+! pipeline组装
+json序列化：
+
+发送端：pojo转json字符串 -> stringEncoder 字符串转字节 - LengthFieldPrepender(增加协议头（长度字段）)
+
+接收端：LengthFieldBasedFrameDecoder解析协议 - stringDecoder 字节转json字符串 - json字符串转pojo
