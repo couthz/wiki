@@ -1,6 +1,6 @@
 created: 20220611151903432
 creator: TidGiUser
-modified: 20220612023705304
+modified: 20220612071503118
 modifier: TidGiUser
 tags: netty fx
 title: 41.Json,protobuf案例
@@ -12,6 +12,12 @@ json序列化：
 发送端：pojo转json字符串 -> stringEncoder 字符串转字节 - LengthFieldPrepender(增加协议头（长度字段）)
 
 接收端：LengthFieldBasedFrameDecoder解析协议 - stringDecoder 字节转json字符串 - json字符串转pojo
+
+protobuf：
+
+发送端：ProtobufEncoder -> ProtobufVarint32LengthFieldPrepender
+
+接收端 ProtobufVarint32FrameDecoder -> ProtobufDncoder
 
 ! Json案例
 见项目 nettytest serilalizer包。
@@ -37,6 +43,10 @@ Google的Gson开源库是一个功能齐全的JSON解析库，起源于Google公
 ! protobuf案例
 使用步骤：
 
-1. Protobuf使用proto文件来预先定义的消息格式。数据包是按照proto文件所定义的消息 格式完成二进制码流的编码和解码。proto文件简单地说，就是一个消息的协议文件，这个 协议文件的后缀文件名为“.proto”。
+1. Protobuf使用proto文件来预先定义的消息格式。数据包是按照proto文件所定义的消格式完成二进制码流的编码和解码。proto文件简单地说，就是一个消息的协议文件，这个 协议文件的后缀文件名为“.proto”。
 
-2. 通过Maven插件生成POJO和Builder
+2. 通过Maven插件根据proto文件的消息格式,生成Protobuf POJO对象,每个对象都有自己的builder
+
+3. 用builder生成对应的POJO对象
+
+
