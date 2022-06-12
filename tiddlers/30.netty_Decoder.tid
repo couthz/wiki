@@ -6,7 +6,7 @@ grade: -1
 history: []
 interval: 0
 lapses: 0
-modified: 20220611151853480
+modified: 20220612074327880
 modifier: TidGiUser
 reps: 1
 retrievability: 1
@@ -110,14 +110,14 @@ ReplayingDecoder关键词：反复，分阶段
 Byte2IntegerDecoder可以用一个更简单的ReplayingDecoder代替
 ReplayingDecoder类是ByteToMessageDecoder的子类。其作用是:
 
-⚫ ''反复''按照decode的逻辑读取ByteBuf缓冲区
+⚫~~ ''反复''~~按照decode的逻辑读取ByteBuf缓冲区(并不带while循环,对比ByteToMessageDecoder，仅仅是把if判断去掉,在调用readInt等方法前会判断长度)
 
 ⚫ 在读取的数据之前，需要检查缓冲区是否有足够的字节。若ByteBuf中有足够的字节，则会正常读取;反之，如果没有足够的字节，则会停止解码。
 
 !! 最简单的整数解码器
-通过这个示例程序，我们可以看到:继承ReplayingDecoder实现一个解码器，就不用编 写长度判断的代码。ReplayingDecoder进行长度判断的原理，其实很简单:它的内部定义了 一个新的二进制缓冲区类，对ByteBuf缓冲区进行了装饰，这个类名为 ReplayingDecoderBuffer。该装饰器的特点是:在缓冲区真正读数据之前，首先进行长度的 判断:如果长度合格，则读取数据;否则，抛出ReplayError。''ReplayingDecoder捕获到 ReplayError后，会留着数据，等待下一次IO事件到来时再读取''。
+通过这个示例程序，我们可以看到:继承ReplayingDecoder实现一个解码器，就不用编 写长度判断的代码。''ReplayingDecoder进行长度判断的原理，其实很简单:它的内部定义了 一个新的二进制缓冲区类，对ByteBuf缓冲区进行了装饰，这个类名为 ReplayingDecoderBuffer。该装饰器的特点是:在缓冲区真正读数据之前，首先进行长度的 判断:如果长度合格，则读取数据;否则，抛出ReplayError。''ReplayingDecoder捕获到 ReplayError后，会留着数据，等待下一次IO事件到来时再读取。
 
-> 其实就是不用写while判断长度了，''看起来适合固定长度分包的场景，比如数据都是整数''
+> 其实就是不用写if判断长度了，''看起来适合固定长度分包的场景，比如数据都是整数''
 > 然而实际上上面这个想法不完全正确，加入了state属性其实可以提升一定的灵活性
 ```java
 public class Byte2IntegerReplayDecoder extends ReplayingDecoder {
