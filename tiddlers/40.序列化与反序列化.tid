@@ -1,8 +1,18 @@
 created: 20220610084203854
 creator: TidGiUser
-modified: 20220611151853484
+difficulty: 5
+due: 20220614075157350
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220612075157351
 modifier: TidGiUser
-tags: netty fx java基础
+reps: 1
+retrievability: 1
+review: 20220612075157350
+stability: 2
+tags: netty fx java基础 ?
 title: 40.序列化与反序列化
 type: text/vnd.tiddlywiki
 

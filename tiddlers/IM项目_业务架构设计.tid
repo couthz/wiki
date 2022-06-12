@@ -1,0 +1,19 @@
+created: 20220612075209249
+creator: TidGiUser
+modified: 20220612080039442
+modifier: TidGiUser
+tags: IM项目 fx
+title: IM项目:业务架构设计
+type: text/vnd.tiddlywiki
+
+基本套路：
+[img[截屏2022-06-12 15.55.51.png]]
+
+业务场景：
+[img[截屏2022-06-12 15.56.18.png]]
+
+把面向过程的场景 转换为 [[面向对象]]的模块
+
+[img[截屏2022-06-12 16.00.32.png]]
+
+

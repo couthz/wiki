@@ -1,7 +1,17 @@
 created: 20220610055841009
 creator: TidGiUser
-modified: 20220610055853168
+difficulty: 5
+due: 20220614075140082
+grade: -1
+history: []
+interval: 0
+lapses: 0
+modified: 20220612075140082
 modifier: TidGiUser
-tags: redis fx undo
+reps: 1
+retrievability: 1
+review: 20220612075140081
+stability: 2
+tags: redis fx undo ?
 title: redis数据结构
 type: text/vnd.tiddlywiki
