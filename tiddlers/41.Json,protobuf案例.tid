@@ -6,7 +6,7 @@ grade: -1
 history: []
 interval: 0
 lapses: 0
-modified: 20220613062306642
+modified: 20220613070210589
 modifier: TidGiUser
 reps: 1
 retrievability: 1
@@ -31,8 +31,13 @@ protobuf：
 
 >如果IM项目中自定义protobuf协议头，是不是可以用LengthFieldBasedFrameDecoder（长度字段数据包解码器）来解析？？？''实验证明是可以的，这样就不用自定义解码器了''
 >见Nettytest项目 protobuftester
+>不过自定义decoder也有好处，更加灵活，''可以做校验，可以添加提示信息,日志信息，LengthFieldBasedFrameDecoder肯定是不能做头部校验的''
+
 > 发送端：SimpleProtobufEncoder 自定义编码器增加头部
 > 接收端：LengthFieldBasedFrameDecoder - ProtobufDecoder
+
+----
+>''还需要注意一点：bytebuf一般是堆外内存，而byte[]一般是堆内''
 
 ! Json案例
 见项目 nettytest serilalizer包。

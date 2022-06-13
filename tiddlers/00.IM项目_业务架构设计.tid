@@ -1,6 +1,6 @@
 created: 20220612075209249
 creator: TidGiUser
-modified: 20220613031039914
+modified: 20220613071358865
 modifier: TidGiUser
 tags: IM项目 fx
 title: 00.IM项目:业务架构设计
@@ -26,6 +26,7 @@ type: text/vnd.tiddlywiki
 
 模块内部设计：
 
+动作：可能是自己调用的，也可能是别人调用的
 [img[截屏2022-06-12 16.01.56.png]]
 
 例子：

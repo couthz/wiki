@@ -1,0 +1,15 @@
+created: 20220613070742800
+creator: TidGiUser
+modified: 20220613070958040
+modifier: TidGiUser
+tags: IM项目 fx
+title: 30.自定义protobuf解码器编码器
+type: text/vnd.tiddlywiki
+
+[[41.Json,protobuf案例]]
+
+讲几个要点：
+
+1.解码器可以用LengthFieldBasedFrameDecoder实现，但是自定义的好处在于可以校验，可以自定义异常
+
+2.定义一个顶层的message消息，编解码器的泛型就不用动了

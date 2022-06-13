@@ -1,0 +1,13 @@
+created: 20220613073328650
+creator: TidGiUser
+modified: 20220613073731532
+modifier: TidGiUser
+tags: IM项目 fx
+title: 40.IM项目:消息转换器
+type: text/vnd.tiddlywiki
+
+作用：其实就是将用户，聊天信息，心跳包等封装成用于网络交互的protobuf pojo对象（message）
+
+要点：
+converter类的设计，对于每种message都定义对应的converter，这样就能符合开闭原则
+[img[截屏2022-06-13 15.36.42.png]]

@@ -1,0 +1,20 @@
+created: 20220613075708793
+creator: TidGiUser
+modified: 20220613080817330
+modifier: TidGiUser
+tags: IM项目 fx
+title: 60.IM项目:服务端通讯框架
+type: text/vnd.tiddlywiki
+
+
+springboot三方面：
+
+1. 坐标依赖
+
+2. 配置文件
+
+3. 启动类
+
+chatserver，没啥，就是netty的基本使用，[[ServerBootstrap|netty核心组件:Bootstrap引导类]]的组装
+
+[img[截屏2022-06-13 16.07.57.png]]
