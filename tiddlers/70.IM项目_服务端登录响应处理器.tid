@@ -1,0 +1,11 @@
+created: 20220613084848263
+creator: TidGiUser
+modified: 20220613085019663
+modifier: TidGiUser
+tags: IM项目
+title: 70.IM项目:服务端登录响应处理器
+type: text/vnd.tiddlywiki
+
+这里的业务处理可以异步操作了，防止阻塞eventloop
+
+>序列化操作能不能异步呢？？？
