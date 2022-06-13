@@ -1,6 +1,6 @@
 created: 20220612075209249
 creator: TidGiUser
-modified: 20220612080039442
+modified: 20220613004400518
 modifier: TidGiUser
 tags: IM项目 fx
 title: IM项目:业务架构设计
@@ -14,6 +14,17 @@ type: text/vnd.tiddlywiki
 
 把面向过程的场景 转换为 [[面向对象]]的模块
 
+指导思想：高内聚低耦合
+
+例如抽取公共的session模块
+
 [img[截屏2022-06-12 16.00.32.png]]
 
+如果是这么开发模块就变成面向过程了
+
+[img[截屏2022-06-12 16.01.14.png]]
+
+模块内部设计：
+
+[img[截屏2022-06-12 16.01.56.png]]
 
