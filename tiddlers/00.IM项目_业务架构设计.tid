@@ -1,11 +1,9 @@
 created: 20220612075209249
 creator: TidGiUser
-draft.of: IM项目:业务架构设计
-draft.title: IM项目:业务架构设计
-modified: 20220613013439850
+modified: 20220613031039914
 modifier: TidGiUser
 tags: IM项目 fx
-title: Draft of 'IM项目:业务架构设计' by TidGiUser
+title: 00.IM项目:业务架构设计
 type: text/vnd.tiddlywiki
 
 基本套路：
@@ -32,4 +30,8 @@ type: text/vnd.tiddlywiki
 
 例子：
 
+其实内部边界梳理的时候，是按照场景分别去梳理的
+
+然后根据不同场景，区分出变与不变
+[img[截屏2022-06-13 11.08.51.png]]
 

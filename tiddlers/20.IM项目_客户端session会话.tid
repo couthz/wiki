@@ -1,0 +1,14 @@
+created: 20220613021451910
+creator: TidGiUser
+modified: 20220613031047226
+modifier: TidGiUser
+tags: IM项目 fx
+title: 20.IM项目:客户端session会话
+type: text/vnd.tiddlywiki
+
+作用：让通道连接(Channel)和用户(User)状态的管理 和使用变得方便，都使用了一个非常重要的概念——会话(Session)。有点儿类似Tomcat 的服务器会话，只是在实现上比较简单
+
+设计：
+[img[截屏2022-06-13 10.16.05.png]]
+
+>视频的讲解感觉是自底向上，而且面向对象，分模块的讲解，而书感觉是自顶向下，而且面向过程，按照不同功能场景去讲解
