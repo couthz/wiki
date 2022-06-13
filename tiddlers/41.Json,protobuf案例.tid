@@ -6,7 +6,7 @@ grade: -1
 history: []
 interval: 0
 lapses: 0
-modified: 20220612075159716
+modified: 20220613062306642
 modifier: TidGiUser
 reps: 1
 retrievability: 1
@@ -21,13 +21,18 @@ json序列化：
 
 发送端：pojo转json字符串 -> stringEncoder 字符串转字节 - LengthFieldPrepender(增加协议头（长度字段）)
 
-接收端：LengthFieldBasedFrameDecoder解析协议 - stringDecoder 字节转json字符串 - json字符串转pojo
+接收端：[[LengthFieldBasedFrameDecoder|30.netty:Decoder]] 解析协议 - stringDecoder 字节转json字符串 - json字符串转pojo
 
 protobuf：
 
-发送端：ProtobufEncoder -> ProtobufVarint32LengthFieldPrepender
+发送端：ProtobufEncoder(pojo转字节) -> ProtobufVarint32LengthFieldPrepender（增加协议头（长度字段））
 
-接收端 ProtobufVarint32FrameDecoder -> ProtobufDncoder
+接收端 ProtobufVarint32FrameDecoder 解析协议 -> ProtobufDncoder
+
+>如果IM项目中自定义protobuf协议头，是不是可以用LengthFieldBasedFrameDecoder（长度字段数据包解码器）来解析？？？''实验证明是可以的，这样就不用自定义解码器了''
+>见Nettytest项目 protobuftester
+> 发送端：SimpleProtobufEncoder 自定义编码器增加头部
+> 接收端：LengthFieldBasedFrameDecoder - ProtobufDecoder
 
 ! Json案例
 见项目 nettytest serilalizer包。
