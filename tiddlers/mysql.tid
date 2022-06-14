@@ -1,0 +1,11 @@
+created: 20220614025230188
+creator: TidGiUser
+modified: 20220614025543449
+modifier: TidGiUser
+tags: 技术 fx
+title: mysql
+type: text/vnd.tiddlywiki
+
+mysql开发的三个基本面：存储引擎、索引、事务
+
+最基本的用mysql来开发，就3点：存储引擎（了解），索引（能建索引，写的SQL都用上索引），事务（了解事务的隔离级别，基于spring的事务支持在代码里加事务）
